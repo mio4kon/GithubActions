@@ -1,24 +1,49 @@
-
 name: CI
-
-# Controls when the workflow will run
 on:
-  # Triggers the workflow on push or pull request events but only for the "main" branch
   push:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
 
-  # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
   A:
-    # The type of runner that the job will run on
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
       - name: Run a one-line script
         run: echo Hello, world!
+
+  B:
+    runs-on: ubuntu-latest
+    # needs: [ A ]
+    steps:
+      - name: Run a one-line script
+        run: echo Hello, world!
+        
+  D:
+    runs-on: ubuntu-latest
+    needs: [ A ]
+    steps:
+      - name: Run a one-line script
+        run: echo Hello, world!        
+  C:
+    runs-on: ubuntu-latest
+    needs: [ B ]
+    steps:
+      - name: Run a one-line script
+        run: echo Hello, world!   
+
+  E:
+    runs-on: ubuntu-latest
+    needs: [ C ]
+    steps:
+      - name: Run a one-line script
+        run: echo Hello, world!       
+
+  F:
+    runs-on: ubuntu-latest
+    needs: [ D ]
+    steps:
+      - name: Run a one-line script
+        run: echo Hello, world!        
