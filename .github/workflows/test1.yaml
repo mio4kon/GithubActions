@@ -9,7 +9,7 @@ on:
 
 jobs:
   A:
-    runs-on: macos-14-arm64
+    runs-on: macos-latest
     steps:
       - name: Run a one-line script
         run: echo Hello, world!
