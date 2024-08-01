@@ -12,7 +12,7 @@ jobs:
     runs-on: macos-latest
     steps:
       - name: Run a one-line script
-        run: echo Hello, world!
+        run: ls -la /Applications/
 
   B:
     runs-on: ubuntu-latest
